@@ -1,3 +1,5 @@
+
+
 #to-talk-page {
     color: #FAFAFA;
     margin-left: 25px;
@@ -5,11 +7,15 @@
 
 }
 
+li {
+    /*line-height: 700px;*/
+}
 
 #student-to-talk-page {
     padding-left: 15px;
     font-size: 13px;
     margin-left: 35px;
+    /*line-height: 68px;*/
 }
 
 
@@ -39,12 +45,12 @@
     margin-top: 17px;
 }
 
-#hired-button {
+#hired-button-profile {
     background-color: #E02735;
     border: none;
     color: #FAFAFA;
     height: 30px;
-    width: 80px;
+    width: 130px;
     margin-right: 20px;
     font-size: 12px;
     cursor: pointer;

@@ -1,7 +1,19 @@
+#students-list-page {
+    width: 75%;
+    margin: auto;
+    /*padding-top: 20px;*/
+    background-color: #292A2B;
+    /*min-height: 200px;*/
+    padding-bottom: 20px;
+}
+
+
 #students-list {
     color: #FAFAFA;
     margin-left: 25px;
     margin-right: 25px;
+
+
 
 }
 
