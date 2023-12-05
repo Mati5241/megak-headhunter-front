@@ -22,7 +22,7 @@ export const StudentsList = () => {
             workPlace: 'Biuro',
             workCity: 'Warszawa',
             contractType: 'Umowa o pracę',
-            preferredSalary: '100zł',
+            prefferedSalary: '100zł',
             freeInternship: 'Tak',
             programmingExperience: '6 miesięcy'
         },
@@ -37,7 +37,7 @@ export const StudentsList = () => {
             workPlace: 'Biuro',
             workCity: 'Gdańsk',
             contractType: 'Umowa o pracę',
-            preferredSalary: '7 000zł',
+            prefferedSalary: '7 000zł',
             freeInternship: 'Tak',
             programmingExperience: 'Brak'
         },
@@ -52,11 +52,12 @@ export const StudentsList = () => {
             workPlace: 'Biuro',
             workCity: 'Kraków',
             contractType: 'Umowa o pracę',
-            preferredSalary: '100 000zł',
+            prefferedSalary: '100 000zł',
             freeInternship: 'Nie',
             programmingExperience: '9 miesięcy'
         },
     ]
+
 
 
     const showMore = (id: string): any => {
@@ -74,31 +75,27 @@ export const StudentsList = () => {
     }
 
 
-    return <div id="students-list-page">
-
-        <div id="students-list">
+    return <div id="students-list">
 
 
-            <ul>
-                {students.map((item: any) => (
-                    <>
-                        <li key={item.id}>
-                            <span className="student">{item.name} {item.surname}</span>
-                            <span onClick={() => showMore(item.id)}
-                                  className="show-more-button">{(arrow === item.id) ? '⮝' : '⮟'}</span>
+        <ul>
+            {students.map((item: any) => (
+                <>
+                    <li key={item.id}>
+                        <span className="student">{item.name} {item.surname}</span>
+                        <span onClick={() => showMore(item.id)} className="show-more-button">{(arrow === item.id) ? '⮝' : '⮟'}</span>
 
-                            <button className="reservation-button">Zarezerwuj rozmowę</button>
+                        <button className="reservation-button">Zarezerwuj rozmowę</button>
 
-                            {(showStudentInfo === item.id) ? <StudentInfo student={item}/> : false}
+                        {(showStudentInfo === item.id) ? <StudentInfo student={item}/> : false}
 
-                        </li>
-                        <hr/>
-                    </>
-                ))}
+                    </li>
+                    <hr/>
+                </>
+            ))}
 
-            </ul>
+        </ul>
 
 
-        </div>
     </div>
 }

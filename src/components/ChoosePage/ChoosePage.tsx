@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-export const ChoosePage = (props: any) => {
+export const ChoosePage = () => {
 
     const [selectedPage, setSelectedPage] = useState('availableStudents');
     const [classButton, setClassButton] = useState('hr-red-left')
@@ -21,11 +21,10 @@ export const ChoosePage = (props: any) => {
         setClassTextMenuSecond(classTextMenuSecond => 'choose-page-button-selected')
     }
 
-    props.selectedPageFunction(selectedPage);
 
     return <>
 
-        <div id="page">
+        {/*<div id="page">*/}
 
             <div className="menu-div">
                 <span onClick={selectMenuFirst} className={classTextMenuFirst}>Dostępni kursanci</span>
@@ -44,7 +43,7 @@ export const ChoosePage = (props: any) => {
             </div>
             <hr className="hr-short"/>
 
-        </div>
+        {/*</div>*/}
 
     </>
 

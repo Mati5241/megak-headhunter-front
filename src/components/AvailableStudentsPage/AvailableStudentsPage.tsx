@@ -5,40 +5,58 @@ import {StudentsList} from "../StudentsList/StudentsList";
 import {StudentInfo} from "../StudentInfo/StudentInfo";
 import {ToTalk} from "../ToTalk/ToTalk";
 import {Foot} from "../Foot/Foot";
-import {ChoosePage} from "../ChoosePage/ChoosePage";
-import {ShowCV} from "../ShowCV/ShowCV";
-import {MainPage} from "../../pages/MainPage/MainPage";
 import {Header} from "../Header/Header";
 
 
-export const AvailableStudentsPage = () => {
+export const AvailableStudentsPage = (props :any) => {
 
-    // const [selectedPage, setSelectedPage] = useState('availableStudents');
-    const [cv, setCv] = useState('');
+    const [selectedPage, setSelectedPage] = useState('availableStudents');
+    const [classButton, setClassButton] = useState('hr-red-left')
+    const [classTextMenuFirst, setClassTextMenuFirst] = useState('choose-page-button-selected')
+    const [classTextMenuSecond, setClassTextMenuSecond] = useState('choose-page-button')
 
+    const selectMenuFirst = () => {
+        setClassButton(classButton => 'hr-red-left')
+        setSelectedPage(selectedPage => 'availableStudents')
+        setClassTextMenuFirst(classTextMenuFirst => 'choose-page-button-selected')
+        setClassTextMenuSecond(classTextMenuSecond => 'choose-page-button')
+    }
 
-
-    // const pullSelectedPage = (data: string) => {
-    //     setSelectedPage(selectedPage => data)
-    // }
-
-    const pullCv = (data: string) => {
-        setCv(cv => data)
+    const selectMenuSecond = () => {
+        setClassButton(classButton => 'hr-red-right')
+        setSelectedPage(selectedPage => 'toTalk')
+        setClassTextMenuFirst(classTextMenuFirst => 'choose-page-button')
+        setClassTextMenuSecond(classTextMenuSecond => 'choose-page-button-selected')
     }
 
 
     return <>
-<Header/>
-        {(cv ==='') ? <MainPage pullCvFunction={pullCv}/> : <ShowCV/>}
-{/*<MainPage/>*/}
-{/*<ShowCV/>*/}
+        <Header/>
+    <div id="page">
+
+        <div className="menu-div">
+            <span onClick={selectMenuFirst} className={classTextMenuFirst}>Dostępni kursanci</span>
+            <span onClick={selectMenuSecond} className={classTextMenuSecond}>Do rozmowy</span>
+
+            <br/>
+        </div>
+        <hr className={classButton}/>
+        <hr className="hr-long"/>
+
+        <div className="menu-div">
+            <input type="search" id="input-search" disabled value="🔎 Szukaj..."/>
+            <input type="button" id="filter-button" value="Filtrowanie"/>
+            <br/>
+
+        </div>
+        <hr className="hr-short"/>
+
+        {(selectedPage === 'availableStudents') ? <StudentsList/> : <ToTalk pullCvFunction={props.pullCvFunction}/>}
 
 
 
-        {/*<ChoosePage selectedPageFunction={pullSelectedPage} selectedPageParent={selectedPage}/>*/}
-        {/*{(selectedPage === 'availableStudents') ? <StudentsList/> : <ToTalk/>}*/}
-        {/*<Foot/>*/}
+    </div>
 
+        <Foot/>
     </>
-
 }

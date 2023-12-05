@@ -1,23 +1,18 @@
 import './ShowCV.css'
 import {Header} from "../Header/Header";
-import {useState} from "react";
 
 
 export const ShowCV = (props: any) => {
 
 
-    // @ts-ignore
-    // const result = props.student.find(item => item.id === props.studentId);
-
-    // console.log(result)
-
     return <>
+        <Header/>
     <div id="show-cv-div">
 
         <div id="profile-div">
             <img id="avatar" src="photo.jpg" alt="Avatar"/>
             <br/>
-            <span id="student-name-span">{props.name} {props.surname}</span>
+            <span id="student-name-span">{props.studentInfo.name} {props.studentInfo.surname}</span>
             <br/><br/>
 
             <div id="contact-div">
@@ -45,10 +40,10 @@ export const ShowCV = (props: any) => {
                         <td>Ocena pracy w zespole w Scrum</td>
                     </tr>
                     <tr id="grades-tr">
-                        <td><span className='grade-span'>4</span><span className='max-grade-span'>/5</span><span className="red-stars">🟊🟊🟊🟊</span><span className="grey-stars">🟊</span></td>
-                        <td><span className='grade-span'>3</span><span className='max-grade-span'>/5</span><span className="red-stars">🟊🟊🟊</span><span className="grey-stars">🟊🟊</span></td>
-                        <td><span className='grade-span'>4</span><span className='max-grade-span'>/5</span><span className="red-stars">🟊🟊🟊🟊</span><span className="grey-stars">🟊</span></td>
-                        <td><span className='grade-span'>2</span><span className='max-grade-span'>/5</span><span className="red-stars">🟊🟊</span><span className="grey-stars">🟊🟊🟊</span></td>
+                        <td><span className='grade-span'>{props.studentInfo.courseGrade}</span><span className='max-grade-span'>/5</span><span className="red-stars">{'🟊'.repeat(props.studentInfo.courseGrade)}</span><span className="grey-stars">{'🟊'.repeat(5 - (props.studentInfo.courseGrade))}</span></td>
+                        <td><span className='grade-span'>{props.studentInfo.activityGrade}</span><span className='max-grade-span'>/5</span><span className="red-stars">{'🟊'.repeat(props.studentInfo.activityGrade)}</span><span className="grey-stars">{'🟊'.repeat(5 - (props.studentInfo.activityGrade))}</span></td>
+                        <td><span className='grade-span'>{props.studentInfo.codeGrade}</span><span className='max-grade-span'>/5</span><span className="red-stars">{'🟊'.repeat(props.studentInfo.codeGrade)}</span><span className="grey-stars">{'🟊'.repeat(5 - (props.studentInfo.codeGrade))}</span></td>
+                        <td><span className='grade-span'>{props.studentInfo.workGrade}</span><span className='max-grade-span'>/5</span><span className="red-stars">{'🟊'.repeat(props.studentInfo.workGrade)}</span><span className="grey-stars">{'🟊'.repeat(5 - (props.studentInfo.workGrade))}</span></td>
                 </tr>
                 </table>
             </div>
@@ -65,12 +60,12 @@ export const ShowCV = (props: any) => {
 
                     </tr>
                     <tr id="answers-tr">
-                        <td>Biuro</td>
-                        <td>Warszawa</td>
-                        <td>Umowa o pracę</td>
-                        <td>1zł</td>
-                        <td>Tak</td>
-                        <td>3 miesiące</td>
+                        <td>{props.studentInfo.workPlace}</td>
+                        <td>{props.studentInfo.workCity}</td>
+                        <td>{props.studentInfo.contractType}</td>
+                        <td>{props.studentInfo.preferredSalary}</td>
+                        <td>{props.studentInfo.freeInternship}</td>
+                        <td>{props.studentInfo.programmingExperience}</td>
                     </tr>
                 </table>
             </div>

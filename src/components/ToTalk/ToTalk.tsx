@@ -1,17 +1,23 @@
 import './ToTalk.css';
-import {useState} from "react";
+import React, {useState} from "react";
 import {StudentInfo} from "../StudentInfo/StudentInfo";
 import {ShowCV} from "../ShowCV/ShowCV";
 import {StudentsList} from "../StudentsList/StudentsList";
+import {Route, useNavigate} from "react-router-dom";
 
 
 export const ToTalk = (props: any) => {
 
+    const navigate = useNavigate()
 
     const [showStudentInfo, setShowStudentInfo] = useState('');
     const [arrow, setArrow] = useState('')
     const [cv, setCv] = useState('');
+    const [studentInfo, setStudentInfo] = useState(null);
 
+    // const navigateToCv = () => {
+    //     navigate('/cv');
+    // };
 
     const showMore = (id: string): any => {
 
@@ -27,15 +33,14 @@ export const ToTalk = (props: any) => {
         }
     }
 
-
-
     const showCv = (item: any): any => {
 
         setCv(cv => item.id)
-        console.log(cv)
-    }
+        setStudentInfo(studentInfo => item)
+        props.pullCvFunction(item)
+        navigate('/cv');
 
-    props.pullCvFunction(cv);
+    }
 
 
     const students: any[] = [
@@ -67,22 +72,19 @@ export const ToTalk = (props: any) => {
             contractType: 'Umowa o pracę',
             preferredSalary: '100zł',
             freeInternship: 'Tak',
-            programmingExperience: '6 miesięcy'
+            programmingExperience: '3 miesiące'
         },
     ]
 
-
     return <>
 
-        {(cv === '') ?
 
-            <div id="students-list-page">
-                <div id="to-talk-page">
+        <div id="to-talk-page">
 
-                    <ul>
-                        {students.map((item: any) => (
-                            <>
-                                <li key={item.id}>
+            <ul>
+                {students.map((item: any) => (
+                    <>
+                        <li key={item.id}>
 
                 <span className="reservation-span">
                     <span className="reservation-until">Rezerwacja do</span>
@@ -90,31 +92,30 @@ export const ToTalk = (props: any) => {
                     <span className="reservation-date">31.12.2023 r.</span>
                 </span>
 
-                                    <img className="avatar" src="photo.jpg" alt="Avatar"/>
+                            <img className="avatar" src="photo.jpg" alt="Avatar"/>
 
-                                    <span id="student-to-talk-page">{item.name} {item.surname}</span>
-                                    <span onClick={() => showMore(item.id)} className="show-more-button">{(arrow === item.id) ? '⮝' : '⮟'}</span>
-                                    <button id="hired-button-profile">Zatrudniony</button>
-                                    <button id="not-intrested-button">Brak zainteresowania</button>
-                                    <button onClick={() => showCv(item)} id="show-cv-button">Pokaż CV</button>
+                            <span id="student-to-talk-page">{item.name} {item.surname}</span>
+                            <span onClick={() => showMore(item.id)}
+                                  className="show-more-button">{(arrow === item.id) ? '⮝' : '⮟'}</span>
+                            <button id="hired-button-profile">Zatrudniony</button>
+                            <button id="not-intrested-button">Brak zainteresowania</button>
+                            <button onClick={() => showCv(item)} id="show-cv-button">Pokaż CV</button>
+                            {/*<button onClick={navigateToCv} id="show-cv-button">Pokaż CV</button>*/}
 
 
-                                    {(showStudentInfo === item.id) ? <StudentInfo student={item}/> : false}
+                            {(showStudentInfo === item.id) ? <StudentInfo student={item}/> : false}
 
 
-                                </li>
+                        </li>
 
-                                <hr/>
+                        <hr/>
 
-                            </>
-                        ))}
+                    </>
+                ))}
 
-                    </ul>
+            </ul>
 
-                </div>
-            </div>
-
-            : <ShowCV student={students} studentId={cv}/>}
+        </div>
 
     </>
 }

@@ -30,6 +30,7 @@ import {ChoosePage} from "../../components/ChoosePage/ChoosePage";
 import {StudentsList} from "../../components/StudentsList/StudentsList";
 import {ToTalk} from "../../components/ToTalk/ToTalk";
 import {Foot} from "../../components/Foot/Foot";
+import {Header} from "../../components/Header/Header";
 
 
 
@@ -46,8 +47,10 @@ export const MainPage = (props: any) => {
 
 
     return <>
-        <ChoosePage selectedPageFunction={pullSelectedPage}/>
-        {(selectedPage === 'availableStudents') ? <StudentsList/> : <ToTalk pullCvFunction={props.pullCvFunction}/>}
+        <Header/>
+        {(selectedPage === 'availableStudents') ? <StudentsList/> : <ToTalk/>}
+        {/*<ChoosePage selectedPageFunction={pullSelectedPage}/>*/}
+        {/*{(selectedPage === 'availableStudents') ? <StudentsList/> : <ToTalk pullCvFunction={props.pullCvFunction}/>}*/}
         <Foot/>
 
 
