@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Papa from 'papaparse';
 
 interface Student {
   name: string;
@@ -13,65 +12,65 @@ const AdminPage: React.FC = () => {
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
     if (selectedFile) {
-      setFile(selectedFile);
+      if (selectedFile.name.endsWith('.json')) {
+        setFile(selectedFile);
+      } else {
+        alert('Dozwolone są tylko pliki w formacie JSON.');
+      }
     }
   };
 
   const importStudents = async () => {
     if (!file) {
-      alert('Wybierz plik do importu.');
+      alert('Wybierz plik JSON do importu.');
       return;
     }
 
-    // Wczytaj plik CSV za pomocą papaparse
-    Papa.parse(file, {
-      header: true,
-      complete: (result: Papa.ParseResult<Student>) => {
-        const students: Student[] = result.data;
-        if (students && students.length > 0) {
-          // Przeprowadź walidację i importuj kursantów
-          const validStudents = validateAndFilterStudents(students);
-          importValidStudents(validStudents);
-        }
-      },
-    });
+    // Konwertuj plik JSON na tablicę obiektów
+    const students = await convertJSONtoStudents(file);
+
+    // Przygotuj obiekt FormData i dodaj plik JSON
+    const formData = new FormData();
+    formData.append('studentsFile', file);
+
+    // Dodaj inne dane, jeśli potrzebujesz
+    formData.append('otherData', 'Wartość');
+
+    // Wyślij żądanie POST z wykorzystaniem fetch
+    try {
+      const response = await fetch('URL_DO_API', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert('Plik został zaimportowany pomyślnie.');
+      } else {
+        alert('Wystąpił błąd podczas importu.');
+      }
+    } catch (error) {
+      console.error('Wystąpił błąd:', error);
+    }
   };
 
-  const validateAndFilterStudents = (students: Student[]): Student[] => {
-    // Przeprowadź walidację
-    const validStudents = students.filter((student) => {
-      return (
-        student.email.includes('@') && // Prosta walidacja adresu e-mail
-        // Dodaj inne warunki walidacji według potrzeb
-        // Sprawdź, czy osoba nie jest już dodana
-        !isStudentAlreadyAdded(student.email)
-      );
+  const convertJSONtoStudents = async (jsonFile: File): Promise<Student[]> => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        const jsonData = event.target?.result as string;
+        const students: Student[] = JSON.parse(jsonData);
+        resolve(students);
+      };
+
+      reader.readAsText(jsonFile);
     });
-
-    return validStudents;
-  };
-
-  const isStudentAlreadyAdded = (email: string): boolean => {
-    // Sprawdź, czy osoba jest już dodana (implementacja zależy od struktury twojej aplikacji)
-    // Zwróć true, jeśli osoba jest już dodana, w przeciwnym razie false
-    return false;
-  };
-
-  const importValidStudents = (students: Student[]) => {
-    // Tutaj możesz zaimplementować logikę importu kursantów do twojej aplikacji
-    // Po zaimportowaniu każdej osoby, wysyłasz link rejestracyjny
-    students.forEach((student) => {
-      // Implementuj logikę wysyłki linku rejestracyjnego
-      console.log(`Wysłano link rejestracyjny do: ${student.email}`);
-    });
-
-    // Opcjonalnie możesz zaktualizować stan aplikacji po imporcie
   };
 
   return (
     <div>
-      <h1>Admin Panel</h1>
-      <input type="file" accept=".csv" onChange={handleFileChange} />
+      <h1>Panel Admina</h1>
+      <input type="file" name="studentsList" accept=".json" onChange={handleFileChange} />
       <button onClick={importStudents}>Importuj Kursantów</button>
     </div>
   );
