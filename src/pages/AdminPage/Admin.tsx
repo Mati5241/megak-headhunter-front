@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Admin.css';
 
 interface Student {
   name: string;
