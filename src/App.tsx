@@ -1,15 +1,10 @@
 import React, {useState} from 'react';
 import './App.css';
-import {MainPage} from "./pages/MainPage/MainPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import {Test} from "./components/test/Test";
-import {ToTalk} from "./components/ToTalk/ToTalk";
 import {ShowCV} from "./components/ShowCV/ShowCV";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {AppRouter} from "./components/Routers/Router";
-import {AvailableStudentsPage} from "./components/AvailableStudentsPage/AvailableStudentsPage";
-import {Header} from "./components/Header/Header";
-import {Foot} from "./components/Foot/Foot";
+import {MainPageLayout} from "./components/AvailableStudentsPage/MainPageLayout";
+
 
 export function App() {
 
@@ -27,13 +22,13 @@ export function App() {
             {/*<ShowCV/>*/}
             {/*<ToTalk/>*/}
             {/*<Header/>*/}
-            {/*<AvailableStudentsPage/>*/}
+            {/*<MainPageLayout/>*/}
             {/*<Foot/>*/}
             <BrowserRouter>
                 <Routes>
                     <Route path="/login" element={<LoginPage/>}/>
                     <Route path="/cv" element={<ShowCV studentInfo={cv}/>}/>
-                    <Route path="/" element={<AvailableStudentsPage pullCvFunction={pullCv}/>}>
+                    <Route path="/" element={<MainPageLayout pullCvFunction={pullCv}/>}>
 
                     </Route>
                 </Routes>

@@ -1,3 +1,11 @@
+.page-div {
+    width: 75%;
+    margin: auto;
+    background-color: #292A2B;
+    padding-bottom: 20px;
+}
+
+
 #students-list-page {
     width: 75%;
     margin: auto;
@@ -64,3 +72,45 @@ hr {
 }
 
 
+
+#foot {
+    color: #FAFAFA;
+    font-size: 11px;
+    /*margin-top: 20px;*/
+    /*margin-bottom: 20px;*/
+    text-align: right;
+    width: 75%;
+    margin: 20px auto 20px auto;
+}
+
+
+.previous-next-button {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    background-color: #CFCFCF;
+    border: none;
+    cursor: pointer;
+}
+
+
+.previous-next-button-disabled {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    background-color: #666666;
+    border: none;
+    color: #262626;
+}
+
+
+#select-quantity {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 25px;
+    font-size: 10px;
+    background-color: #CFCFCF;
+    border: none;
+    cursor: pointer;
+
+}

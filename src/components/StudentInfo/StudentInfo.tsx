@@ -22,16 +22,16 @@ export const StudentInfo = (props: any) => {
 
 
             <tr>
-                <td className="td-grade">{props.student.courseGrade}/5</td>
-                <td className="td-grade">{props.student.activityGrade}/5</td>
-                <td className="td-grade">{props.student.codeGrade}/5</td>
-                <td className="td-grade">{props.student.workGrade}/5</td>
-                <td className="td-grade">{props.student.workPlace}</td>
-                <td className="td-grade">{props.student.workCity}</td>
-                <td className="td-grade">{props.student.contractType}</td>
-                <td className="td-grade">{props.student.prefferedSalary}</td>
-                <td className="td-grade">{props.student.freeInternship}</td>
-                <td className="td-grade">{props.student.programmingExperience}</td>
+                <td className="td-grade">{props.student.courseCompletion}/5</td>
+                <td className="td-grade">{props.student.courseEngagment}/5</td>
+                <td className="td-grade">{props.student.projectDegree}/5</td>
+                <td className="td-grade">{props.student.teamProjectDegree}/5</td>
+                <td className="td-grade">{props.student.expectedTypeWork}</td>
+                <td className="td-grade">{props.student.targetWorkCity}</td>
+                <td className="td-grade">{props.student.expectedContractType}</td>
+                <td className="td-grade">{props.student.expectedSalary}</td>
+                <td className="td-grade">{props.student.canTakeApprenticeship}</td>
+                <td className="td-grade">{props.student.monthsOfCommercialExp}</td>
             </tr>
         </table>
 

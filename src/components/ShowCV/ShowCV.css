@@ -2,7 +2,26 @@
     width: 75%;
     margin: auto;
     color: #D7D7D7;
-    background-color: #222324;
+}
+
+#go-back {
+    float: left;
+    margin-left: 130px;
+    display: flex;
+    cursor: pointer;
+}
+
+#arrow-left-span {
+    color: #484848;
+    font-size: 22px;
+    margin-right: 5px;
+
+}
+
+#go-back-span {
+    font-size: 12px;
+    color: #D7D7D7;
+    padding-top: 7px;
 }
 
 #profile-div {
@@ -133,11 +152,11 @@
     width: 25%;
     vertical-align: bottom;
     padding-right: 40px;
-    /*border: solid yellow 4px;*/
 }
 
 #grades-tr {
     height: 50px;
+
 }
 
 .red-stars {
@@ -156,7 +175,7 @@
     font-size: 13px;
     color: #a6a5a5;
     position: absolute;
-    line-height: 30px;
+    line-height: 14px;
     margin-left: 14px;
 
 }
@@ -166,20 +185,16 @@
     padding-right: 5px;
     color: #FAFAFA;
     position: absolute;
-    line-height: 30px;
+    line-height: 14px;
 }
 
 
 #expectations-table {
     width: 100%;
-    /*-webkit-border-vertical-spacing: 0;*/
     border-collapse: collapse;
 
 }
 
-#expectations-table tr {
-    /*border: none;*/
-}
 
 #expectations-table td {
     border-right: solid 1px #292A2B;
