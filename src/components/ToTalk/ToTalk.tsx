@@ -15,6 +15,28 @@ export const ToTalk = (props: any) => {
     const [cv, setCv] = useState('');
     const [studentInfo, setStudentInfo] = useState(null);
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [studentsPerPage, setStudentsPerPage] = useState(10);
+    // const [startIndex, setStartIndex] = useState(0);
+    // const [endIndex, setEndIndex] = useState(10);
+
+
+    const changeQuantity = (e: any) => {
+        setStudentsPerPage(e.target.value)
+    }
+
+    const studentsPreviousPage = (e: any) => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    }
+
+    const studentsNextPage = (e: any) => {
+        if (indexOfLastStudent < studentsAll.length) {
+            setCurrentPage(currentPage + 1);
+        }
+    }
+
 
     const showMore = (id: string): any => {
 
@@ -40,7 +62,7 @@ export const ToTalk = (props: any) => {
     }
 
 
-    const students: any[] = [
+    const studentsAll: any[] = [
         {
             id: '123asd',
             name: 'Student',
@@ -70,8 +92,69 @@ export const ToTalk = (props: any) => {
             preferredSalary: '100zł',
             freeInternship: 'Tak',
             programmingExperience: '3 miesiące'
+        },        {
+            id: '1233asd',
+            name: 'Studentka',
+            surname: 'Testowa',
+            courseGrade: 4,
+            activityGrade: 5,
+            codeGrade: 5,
+            workGrade: 5,
+            workPlace: 'Biuro',
+            workCity: 'Warszawa',
+            contractType: 'Umowa o pracę',
+            preferredSalary: '100zł',
+            freeInternship: 'Tak',
+            programmingExperience: '3 miesiące'
+        },        {
+            id: '1233asd',
+            name: 'Studentka',
+            surname: 'Testowa',
+            courseGrade: 4,
+            activityGrade: 5,
+            codeGrade: 5,
+            workGrade: 5,
+            workPlace: 'Biuro',
+            workCity: 'Warszawa',
+            contractType: 'Umowa o pracę',
+            preferredSalary: '100zł',
+            freeInternship: 'Tak',
+            programmingExperience: '3 miesiące'
+        },        {
+            id: '1233asd',
+            name: 'Studentka',
+            surname: 'Testowa',
+            courseGrade: 4,
+            activityGrade: 5,
+            codeGrade: 5,
+            workGrade: 5,
+            workPlace: 'Biuro',
+            workCity: 'Warszawa',
+            contractType: 'Umowa o pracę',
+            preferredSalary: '100zł',
+            freeInternship: 'Tak',
+            programmingExperience: '3 miesiące'
+        },        {
+            id: '1233asd',
+            name: 'Studentka',
+            surname: 'Testowa',
+            courseGrade: 4,
+            activityGrade: 5,
+            codeGrade: 5,
+            workGrade: 5,
+            workPlace: 'Biuro',
+            workCity: 'Warszawa',
+            contractType: 'Umowa o pracę',
+            preferredSalary: '100zł',
+            freeInternship: 'Tak',
+            programmingExperience: '3 miesiące'
         },
     ]
+
+    const indexOfLastStudent = (currentPage * studentsPerPage);
+    const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
+
+    const students: {}[] = studentsAll.slice(indexOfFirstStudent, indexOfLastStudent);
 
     return <>
 
@@ -114,5 +197,24 @@ export const ToTalk = (props: any) => {
 
             </div>
         </div>
+
+        <div id="foot">
+
+            <label>Ilość elementów</label>
+            <select defaultValue="10" onChange={changeQuantity} id='select-quantity'>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+            </select>
+
+            {(studentsAll.length > indexOfLastStudent) ? indexOfLastStudent : studentsAll.length} z {studentsAll.length}
+            <button onClick={studentsPreviousPage}
+                    className={(currentPage === 1) ? 'previous-next-button-disabled' : 'previous-next-button'}>⮜
+            </button>
+            <button onClick={studentsNextPage}
+                    className={(studentsAll.length < indexOfLastStudent) ? 'previous-next-button-disabled' : 'previous-next-button'}>⮞
+            </button>
+        </div>
+
     </>
 }

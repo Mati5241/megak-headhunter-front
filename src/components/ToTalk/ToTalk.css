@@ -120,6 +120,15 @@ a {
     border: none;
 }
 
+.previous-next-button-disabled {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    background-color: #666666;
+    border: none;
+    color: #262626;
+}
+
 
 #select-quantity {
     margin-left: 10px;

@@ -13,8 +13,6 @@ export const AvailableStudentsPage = (props: any) => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [studentsPerPage, setStudentsPerPage] = useState(10);
-    // const [startIndex, setStartIndex] = useState(0);
-    // const [endIndex, setEndIndex] = useState(10);
 
 
     const changeQuantity = (e: any) => {
@@ -32,9 +30,6 @@ export const AvailableStudentsPage = (props: any) => {
             setCurrentPage(currentPage + 1);
         }
     }
-
-
-    const disabledButton = 'disabled';
 
 
     const studentsAll: {}[] = [
