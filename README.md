@@ -37,7 +37,7 @@ Yes, manager. We just need a little more time... 😀
 
 ## Authors
 
-- [@Nyxon](https://www.github.com/nyxon1)
+- [@Nyxon](https://github.com/nyxon1)
 - [@Mati524](https://github.com/Mati5241)
-- [@DesmondH](https://www.github.com/????????)
+- [@DesmondH](https://github.com/AdamSkrzypinski)
 
