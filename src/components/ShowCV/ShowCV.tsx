@@ -15,15 +15,15 @@ export const ShowCV = (props: any) => {
         <div id="show-cv-div">
 
             <div id="profile-div">
-                <img id="avatar" src="photo.jpg" alt="Avatar"/>
+                <img id="avatar" src={props.studentInfo.avatarUrl} alt="Avatar"/>
                 <br/>
-                <span id="student-name-span">{props.studentInfo.name} {props.studentInfo.surname}</span>
+                <span id="student-name-span">{props.studentInfo.firstName} {props.studentInfo.lastName}</span>
                 <br/><br/>
 
                 <div id="contact-div">
-                    <span className="grey-emojis">☎</span> +48 215 125 252
+                    <span className="grey-emojis">☎</span> {props.studentInfo.tel}
                     <br/>
-                    <span className="grey-emojis">✉</span> mateuszb430@ssmegak.pl
+                    <span className="grey-emojis">✉</span> {props.studentInfo.email}
                 </div>
                 <br/>
                 <div className="grey-text-div">O mnie</div>
@@ -82,7 +82,7 @@ export const ShowCV = (props: any) => {
                             <td>{props.studentInfo.expectedContractType}</td>
                             <td>{props.studentInfo.expectedSalary}</td>
                             <td>{props.studentInfo.canTakeApprenticeship}</td>
-                            <td>{props.studentInfo.monthsOfCommercialExp}</td>
+                            <td>{props.studentInfo.monthsOfCommercialExp} {props.studentInfo.monthsOfCommercialExp === 0 ? "miesięcy" :(props.studentInfo.monthsOfCommercialExp > 4 ? "miesięcy" : "miesiące")}</td>
                         </tr>
                     </table>
                 </div>

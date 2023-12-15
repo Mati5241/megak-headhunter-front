@@ -9,7 +9,7 @@ export const AvailableStudentsPage = () => {
 
     const [showStudentInfo, setShowStudentInfo] = useState('');
     const [arrow, setArrow] = useState('')
-    // const [students, setStudents] = useState([]);
+    const [studentsAll, setStudentsAll] = useState([]);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [studentsPerPage, setStudentsPerPage] = useState(10);
@@ -32,110 +32,20 @@ export const AvailableStudentsPage = () => {
     }
 
 
-    const studentsAll: {}[] = [
-        {
-            id: '1233asd',
-            name: 'Studentka',
-            surname: 'Testowa',
-            courseCompletion: 4,
-            courseEngagment: 5,
-            projectDegree: 5,
-            teamProjectDegree: 5,
-            expectedTypeWork: 'Biuro',
-            targetWorkCity: 'Warszawa',
-            expectedContractType: 'Umowa o pracę',
-            expectedSalary: '100zł',
-            canTakeApprenticeship: 'Tak',
-            monthsOfCommercialExp: '3 miesiące',
-            education: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
-            workExperience: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
-            courses: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
-            portfolioUrls: "https://portfolio.com https://portfolio2.com",
-            projectUrls: "https://portfolio.com https://portfolio2.com",
-            bonusProjectUrls: "https://testowy.com",
-            bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aperiam iste dicta. Quas optio doloribus accusamus fugit vero iusto quos ipsum odit nisi ratione! Quis ex sunt veritatis sed.",
-        },
-        {
-            id: '12633asd',
-            name: 'Student',
-            surname: 'Testowy',
-            courseCompletion: 2,
-            courseEngagment: 2,
-            projectDegree: 4,
-            teamProjectDegree: 3,
-            expectedTypeWork: 'Biuro',
-            targetWorkCity: 'Kraków',
-            expectedContractType: 'Umowa o pracę',
-            expectedSalary: '1000zł',
-            canTakeApprenticeship: 'Tak',
-            monthsOfCommercialExp: '4 miesiące',
-            education: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
-            workExperience: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
-            courses: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
-            portfolioUrls: "https://portfolio.com https://portfolio2.com",
-            projectUrls: "https://portfolio.com https://portfolio2.com",
-            bonusProjectUrls: "https://testowy.com",
-            bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aperiam iste dicta. Quas optio doloribus accusamus fugit vero iusto quos ipsum odit nisi ratione! Quis ex sunt veritatis sed.",
-        },
-        {
-            id: '12533asd',
-            name: 'Testowy',
-            surname: 'Uczeń',
-            courseCompletion: 1,
-            courseEngagment: 2,
-            projectDegree: 4,
-            teamProjectDegree: 5,
-            expectedTypeWork: 'Biuro',
-            targetWorkCity: 'Gdańsk',
-            expectedContractType: 'Umowa o pracę',
-            expectedSalary: '6000zł',
-            canTakeApprenticeship: 'Nie',
-            monthsOfCommercialExp: '0 miesięcy',
-            education: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
-            workExperience: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
-            courses: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
-            portfolioUrls: "https://portfolio.com https://portfolio2.com",
-            projectUrls: "https://portfolio.com https://portfolio2.com",
-            bonusProjectUrls: "https://testowy.com",
-            bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aperiam iste dicta. Quas optio doloribus accusamus fugit vero iusto quos ipsum odit nisi ratione! Quis ex sunt veritatis sed.",
-        },
-        {
-            id: '12334asd',
-            name: 'Uczeń',
-            surname: 'Testowy',
-            courseCompletion: 4,
-            courseEngagment: 5,
-            projectDegree: 5,
-            teamProjectDegree: 5,
-            expectedTypeWork: 'Biuro',
-            targetWorkCity: 'Rzeszów',
-            expectedContractType: 'Umowa o pracę',
-            expectedSalary: '5000zł',
-            canTakeApprenticeship: 'Tak',
-            monthsOfCommercialExp: '3 miesiące',
-            education: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
-            workExperience: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
-            courses: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
-            portfolioUrls: "https://portfolio.com https://portfolio2.com",
-            projectUrls: "https://portfolio.com https://portfolio2.com",
-            bonusProjectUrls: "https://testowy.com",
-            bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aperiam iste dicta. Quas optio doloribus accusamus fugit vero iusto quos ipsum odit nisi ratione! Quis ex sunt veritatis sed.",
-        },
-    ]
-
     const indexOfLastStudent = (currentPage * studentsPerPage);
     const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
 
+
+    const refresh: any = async () => {
+        const res = await fetch(`https://megakhh.cfolks.pl/api/hh/student`)
+        const data = await res.json();
+        setStudentsAll(data.studentsList)
+    };
+
+    refresh();
+
     const students: {}[] = studentsAll.slice(indexOfFirstStudent, indexOfLastStudent);
 
-    // const refresh: any = async () => {
-    //
-    //     const res = await fetch(`https://megakhh.cfolks.pl/api/hh/student`)
-    //     const data = await res.json();
-    //     setStudents(data.studentsList);
-    // };
-
-    // refresh();
 
     const showMore = (id: string): any => {
 
@@ -159,7 +69,7 @@ export const AvailableStudentsPage = () => {
                     {students.map((item: any) => (
                         <>
                             <li key={item.id}>
-                                <span className="student">{item.name} {item.surname}</span>
+                                <span className="student">{item.firstName} {item.lastName}</span>
                                 <span onClick={() => showMore(item.id)}
                                       className="show-more-button">{(arrow === item.id) ? '⮝' : '⮟'}</span>
                                 <button className="reservation-button">Zarezerwuj rozmowę</button>

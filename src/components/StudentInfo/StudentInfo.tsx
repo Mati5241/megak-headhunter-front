@@ -31,7 +31,7 @@ export const StudentInfo = (props: any) => {
                 <td className="td-grade">{props.student.expectedContractType}</td>
                 <td className="td-grade">{props.student.expectedSalary}</td>
                 <td className="td-grade">{props.student.canTakeApprenticeship}</td>
-                <td className="td-grade">{props.student.monthsOfCommercialExp}</td>
+                <td className="td-grade">{props.student.monthsOfCommercialExp} {props.student.monthsOfCommercialExp === 0 ? "miesięcy" :(props.student.monthsOfCommercialExp > 4 ? "miesięcy" : "miesiące")}</td>
             </tr>
         </table>
 
