@@ -4,7 +4,7 @@ import {useState} from "react";
 import {Foot} from "../Foot/Foot";
 
 
-export const AvailableStudentsPage = (props: any) => {
+export const AvailableStudentsPage = () => {
 
 
     const [showStudentInfo, setShowStudentInfo] = useState('');
