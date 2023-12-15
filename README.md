@@ -10,15 +10,15 @@ Thanks to the filtering function, HR can quickly review available students and c
 
 ## FAQ
 
-#### Will this app change the world? 
+### Will this app change the world? 
 
 Maybe not the whole world but definetly our lives. 
 
-#### Why does it not ready yet? 
+### Why does it not ready yet? 
 
 We had some problems with the team, where from 6 people suddenly there were only three.
 
-#### Will it ever be ready?
+### Will it ever be ready?
 
 Yes, manager. We just need a little more time... 😀
 
