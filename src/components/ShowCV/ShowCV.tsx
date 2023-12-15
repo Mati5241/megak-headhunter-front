@@ -27,12 +27,7 @@ export const ShowCV = (props: any) => {
                 </div>
                 <br/>
                 <div className="grey-text-div">O mnie</div>
-                <div id="profile-info-text-div">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
+                <div id="profile-info-text-div">{props.studentInfo.bio}</div>
 
                 <button id="no-interested-button">Brak zainteresowania</button>
                 <button id="hired-button">Zatrudniony</button>
@@ -52,20 +47,20 @@ export const ShowCV = (props: any) => {
                         <tr id="grades-tr">
                             <td><span className='grade-span'>{props.studentInfo.courseCompletion}</span><span
                                 className='max-grade-span'>/5</span><span
-                                className="red-stars">{'🟊'.repeat(props.studentInfo.courseGrade)}</span><span
-                                className="grey-stars">{'🟊'.repeat(5 - (props.studentInfo.courseGrade))}</span></td>
+                                className="red-stars">{'🟊'.repeat(props.studentInfo.courseCompletion)}</span><span
+                                className="grey-stars">{'🟊'.repeat(5 - (props.studentInfo.courseCompletion))}</span></td>
                             <td><span className='grade-span'>{props.studentInfo.courseEngagment}</span><span
                                 className='max-grade-span'>/5</span><span
-                                className="red-stars">{'🟊'.repeat(props.studentInfo.activityGrade)}</span><span
-                                className="grey-stars">{'🟊'.repeat(5 - (props.studentInfo.activityGrade))}</span></td>
+                                className="red-stars">{'🟊'.repeat(props.studentInfo.courseEngagment)}</span><span
+                                className="grey-stars">{'🟊'.repeat(5 - (props.studentInfo.courseEngagment))}</span></td>
                             <td><span className='grade-span'>{props.studentInfo.projectDegree}</span><span
                                 className='max-grade-span'>/5</span><span
-                                className="red-stars">{'🟊'.repeat(props.studentInfo.codeGrade)}</span><span
-                                className="grey-stars">{'🟊'.repeat(5 - (props.studentInfo.codeGrade))}</span></td>
+                                className="red-stars">{'🟊'.repeat(props.studentInfo.projectDegree)}</span><span
+                                className="grey-stars">{'🟊'.repeat(5 - (props.studentInfo.projectDegree))}</span></td>
                             <td><span className='grade-span'>{props.studentInfo.teamProjectDegree}</span><span
                                 className='max-grade-span'>/5</span><span
-                                className="red-stars">{'🟊'.repeat(props.studentInfo.workGrade)}</span><span
-                                className="grey-stars">{'🟊'.repeat(5 - (props.studentInfo.workGrade))}</span></td>
+                                className="red-stars">{'🟊'.repeat(props.studentInfo.teamProjectDegree)}</span><span
+                                className="grey-stars">{'🟊'.repeat(5 - (props.studentInfo.teamProjectDegree))}</span></td>
                         </tr>
                     </table>
                 </div>
@@ -98,11 +93,11 @@ export const ShowCV = (props: any) => {
                 <div className="header">Doświadczenie zawodowe</div>
                 <div className="info-div">{props.studentInfo.workExperience}</div>
                 <div className="header">Portfolio</div>
-                <div className="info-div"><span className="link">🔗 ️www.github.com</span></div>
+                <div className="info-div"><span className="link">🔗 {props.studentInfo.portfolioUrls}</span></div>
                 <div className="header">Projekt w zespole scrumowym</div>
-                <div className="info-div"><span className="link">🔗 ️www.github.com</span></div>
+                <div className="info-div"><span className="link">🔗 {props.studentInfo.bonusProjectUrls}</span></div>
                 <div className="header">Projekt na zaliczenie</div>
-                <div className="info-div"><span className="link">🔗 ️www.github.com</span></div>
+                <div className="info-div"><span className="link">🔗 {props.studentInfo.projectUrls}</span></div>
 
 
             </div>

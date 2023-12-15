@@ -34,73 +34,92 @@ export const AvailableStudentsPage = () => {
 
     const studentsAll: {}[] = [
         {
-            id: 1,
-            firstName: 'Mateusz',
-            lastName: 'Byba'
-        }, {
-            id: 2,
-            firstName: 'Tester',
-            lastName: 'Testowy'
-        }, {
-            id: 3,
-            firstName: 'Testerka',
-            lastName: 'Testowa'
-        }, {
-            id: 30,
-            firstName: 'Testerka',
-            lastName: 'Testowa'
-        }, {
-            id: 40,
-            firstName: 'Testerka5',
-            lastName: 'Testowa'
-        }, {
-            id: 50,
-            firstName: 'Testerka6',
-            lastName: 'Testowa'
-        }, {
-            id: 60,
-            firstName: 'Testerka7',
-            lastName: 'Testowa'
-        }, {
-            id: 4,
-            firstName: 'Testerka8',
-            lastName: 'Testowa'
-        }, {
-            id: 5,
-            firstName: 'Testerka9',
-            lastName: 'Testowa'
-        }, {
-            id: 6,
-            firstName: 'Testerka10',
-            lastName: 'Testowa'
-        }, {
-            id: 7,
-            firstName: 'Testerka',
-            lastName: '11'
-        }, {
-            id: 8,
-            firstName: 'Testerka',
-            lastName: '12'
-        }, {
-            id: 9,
-            firstName: 'Testerka',
-            lastName: '13'
-        }, {
-            id: 10,
-            firstName: 'Testerka10',
-            lastName: '14'
-        }, {
-            id: 11,
-            firstName: 'Testerka11',
-            lastName: '15'
-        }, {
-            id: 12,
-            firstName: 'Testerka12',
-            lastName: '16'
-        }, {
-            id: 13,
-            firstName: 'Testerka13',
-            lastName: '17'
+            id: '1233asd',
+            name: 'Studentka',
+            surname: 'Testowa',
+            courseCompletion: 4,
+            courseEngagment: 5,
+            projectDegree: 5,
+            teamProjectDegree: 5,
+            expectedTypeWork: 'Biuro',
+            targetWorkCity: 'Warszawa',
+            expectedContractType: 'Umowa o pracę',
+            expectedSalary: '100zł',
+            canTakeApprenticeship: 'Tak',
+            monthsOfCommercialExp: '3 miesiące',
+            education: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
+            workExperience: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
+            courses: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
+            portfolioUrls: "https://portfolio.com https://portfolio2.com",
+            projectUrls: "https://portfolio.com https://portfolio2.com",
+            bonusProjectUrls: "https://testowy.com",
+            bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aperiam iste dicta. Quas optio doloribus accusamus fugit vero iusto quos ipsum odit nisi ratione! Quis ex sunt veritatis sed.",
+        },
+        {
+            id: '12633asd',
+            name: 'Student',
+            surname: 'Testowy',
+            courseCompletion: 2,
+            courseEngagment: 2,
+            projectDegree: 4,
+            teamProjectDegree: 3,
+            expectedTypeWork: 'Biuro',
+            targetWorkCity: 'Kraków',
+            expectedContractType: 'Umowa o pracę',
+            expectedSalary: '1000zł',
+            canTakeApprenticeship: 'Tak',
+            monthsOfCommercialExp: '4 miesiące',
+            education: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
+            workExperience: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
+            courses: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
+            portfolioUrls: "https://portfolio.com https://portfolio2.com",
+            projectUrls: "https://portfolio.com https://portfolio2.com",
+            bonusProjectUrls: "https://testowy.com",
+            bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aperiam iste dicta. Quas optio doloribus accusamus fugit vero iusto quos ipsum odit nisi ratione! Quis ex sunt veritatis sed.",
+        },
+        {
+            id: '12533asd',
+            name: 'Testowy',
+            surname: 'Uczeń',
+            courseCompletion: 1,
+            courseEngagment: 2,
+            projectDegree: 4,
+            teamProjectDegree: 5,
+            expectedTypeWork: 'Biuro',
+            targetWorkCity: 'Gdańsk',
+            expectedContractType: 'Umowa o pracę',
+            expectedSalary: '6000zł',
+            canTakeApprenticeship: 'Nie',
+            monthsOfCommercialExp: '0 miesięcy',
+            education: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
+            workExperience: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
+            courses: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
+            portfolioUrls: "https://portfolio.com https://portfolio2.com",
+            projectUrls: "https://portfolio.com https://portfolio2.com",
+            bonusProjectUrls: "https://testowy.com",
+            bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aperiam iste dicta. Quas optio doloribus accusamus fugit vero iusto quos ipsum odit nisi ratione! Quis ex sunt veritatis sed.",
+        },
+        {
+            id: '12334asd',
+            name: 'Uczeń',
+            surname: 'Testowy',
+            courseCompletion: 4,
+            courseEngagment: 5,
+            projectDegree: 5,
+            teamProjectDegree: 5,
+            expectedTypeWork: 'Biuro',
+            targetWorkCity: 'Rzeszów',
+            expectedContractType: 'Umowa o pracę',
+            expectedSalary: '5000zł',
+            canTakeApprenticeship: 'Tak',
+            monthsOfCommercialExp: '3 miesiące',
+            education: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
+            workExperience: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
+            courses: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, eum.",
+            portfolioUrls: "https://portfolio.com https://portfolio2.com",
+            projectUrls: "https://portfolio.com https://portfolio2.com",
+            bonusProjectUrls: "https://testowy.com",
+            bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aperiam iste dicta. Quas optio doloribus accusamus fugit vero iusto quos ipsum odit nisi ratione! Quis ex sunt veritatis sed.",
         },
     ]
 
@@ -111,7 +130,7 @@ export const AvailableStudentsPage = () => {
 
     // const refresh: any = async () => {
     //
-    //     const res = await fetch(`https://nuidzruvvg.cfolks.pl/hh/student/`)
+    //     const res = await fetch(`https://megakhh.cfolks.pl/api/hh/student`)
     //     const data = await res.json();
     //     setStudents(data.studentsList);
     // };
@@ -140,7 +159,7 @@ export const AvailableStudentsPage = () => {
                     {students.map((item: any) => (
                         <>
                             <li key={item.id}>
-                                <span className="student">{item.firstName} {item.lastName}</span>
+                                <span className="student">{item.name} {item.surname}</span>
                                 <span onClick={() => showMore(item.id)}
                                       className="show-more-button">{(arrow === item.id) ? '⮝' : '⮟'}</span>
                                 <button className="reservation-button">Zarezerwuj rozmowę</button>
