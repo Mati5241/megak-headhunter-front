@@ -25,7 +25,7 @@ Yes, manager. We just need a little more time... 😀
 
 ## Demo
 
-... Insert gif here ...
+<img src= layoutgif.gif>
 
 
 ## Tech Stack
