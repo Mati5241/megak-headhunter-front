@@ -11,9 +11,10 @@
 #header-inside {
     background-color: #1E1E1F;
     width: 74%;
-
-    height: 65px;
+      height: 65px;
     margin: auto;
+
+
 
 }
 
@@ -32,10 +33,10 @@
 
 }
 
+
 #header-avatar {
     border-radius: 50%;
     height: 40px;
-    /*position: absolute;*/
     margin-top: 14px;
     margin-right: 10px;
     float: right;
