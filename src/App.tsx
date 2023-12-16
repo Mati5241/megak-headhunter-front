@@ -16,14 +16,6 @@ export function App() {
 
     return (
         <div className="App">
-            {/*<MainPage/>*/}
-            {/*<LoginPage/>*/}
-            {/*<Test/>*/}
-            {/*<ShowCV/>*/}
-            {/*<ToTalk/>*/}
-            {/*<Header/>*/}
-            {/*<MainPageLayout/>*/}
-            {/*<Foot/>*/}
             <BrowserRouter>
                 <Routes>
                     <Route path="/login" element={<LoginPage/>}/>
@@ -38,11 +30,3 @@ export function App() {
         </div>
     );
 }
-
-
-// export function App() {
-//     return <>
-//         <AppRouter/>
-//     </>
-// }
-
