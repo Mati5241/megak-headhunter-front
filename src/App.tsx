@@ -1,16 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import {MainPage} from "./pages/MainPage/MainPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import AdminPage from "./pages/AdminPage/Admin"
+import {ShowCV} from "./components/ShowCV/ShowCV";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {MainPageLayout} from "./components/AvailableStudentsPage/MainPageLayout";
+
 
 export function App() {
+
+    const [cv, setCv] = useState(null);
+
+    const pullCv = (data: any) => {
+        setCv(cv => data)
+    }
+
     return (
         <div className="App">
-            <AdminPage/>
-            {/*<LoginPage/>*/}
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/cv" element={<ShowCV studentInfo={cv}/>}/>
+                    <Route path="/" element={<MainPageLayout pullCvFunction={pullCv}/>}>
+
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+
+
         </div>
     );
 }
-
-

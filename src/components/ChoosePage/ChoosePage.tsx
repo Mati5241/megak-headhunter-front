@@ -1,12 +1,6 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
-import "./AvailableStudentsPage.css"
-import {StudentsList} from "../StudentsList/StudentsList";
-import {StudentInfo} from "../StudentInfo/StudentInfo";
-import {ToTalk} from "../ToTalk/ToTalk";
-
-
-export const AvailableStudentsPage = () => {
+export const ChoosePage = () => {
 
     const [selectedPage, setSelectedPage] = useState('availableStudents');
     const [classButton, setClassButton] = useState('hr-red-left')
@@ -30,24 +24,26 @@ export const AvailableStudentsPage = () => {
 
     return <>
 
-        <div className="menu-div">
-            <span onClick={selectMenuFirst} className={classTextMenuFirst}>Dostępni kursanci</span>
-            <span onClick={selectMenuSecond} className={classTextMenuSecond}>Do rozmowy</span>
+        {/*<div id="page">*/}
 
-            <br/>
-        </div>
-        <hr className={classButton}/>
-        <hr className="hr-long"/>
+            <div className="menu-div">
+                <span onClick={selectMenuFirst} className={classTextMenuFirst}>Dostępni kursanci</span>
+                <span onClick={selectMenuSecond} className={classTextMenuSecond}>Do rozmowy</span>
 
-        <div className="menu-div">
-            <input type="search" id="input-search" disabled value="🔎 Szukaj..."/>
-            <input type="button" id="filter-button" value="Filtrowanie"/>
-            <br/>
+                <br/>
+            </div>
+            <hr className={classButton}/>
+            <hr className="hr-long"/>
 
-        </div>
-        <hr className="hr-short"/>
+            <div className="menu-div">
+                <input type="search" id="input-search" disabled value="🔎 Szukaj..."/>
+                <input type="button" id="filter-button" value="Filtrowanie"/>
+                <br/>
 
-        {(selectedPage === 'availableStudents') ? <StudentsList/> : <ToTalk/>}
+            </div>
+            <hr className="hr-short"/>
+
+        {/*</div>*/}
 
     </>
 

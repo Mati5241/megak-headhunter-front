@@ -1,9 +1,7 @@
 
 import './StudentInfo.css'
 
-export const StudentInfo = () => {
-
-
+export const StudentInfo = (props: any) => {
 
 
     return <div id="student-info">
@@ -21,17 +19,19 @@ export const StudentInfo = () => {
                 <td className="td-info">Zgoda na odbycie bezpłatnych praktyk/stażu na początek</td>
                 <td className="td-info">Komercyjne doświadczenie w programowaniu</td>
             </tr>
+
+
             <tr>
-                <td className="td-grade">5/5</td>
-                <td className="td-grade">5/5</td>
-                <td className="td-grade">5/5</td>
-                <td className="td-grade">5/5</td>
-                <td className="td-grade">Biuro</td>
-                <td className="td-grade">Warszawa</td>
-                <td className="td-grade">Umowa o pracę</td>
-                <td className="td-grade">100 000zł</td>
-                <td className="td-grade">Tak</td>
-                <td className="td-grade">6 miesięcy</td>
+                <td className="td-grade">{props.student.courseCompletion}/5</td>
+                <td className="td-grade">{props.student.courseEngagment}/5</td>
+                <td className="td-grade">{props.student.projectDegree}/5</td>
+                <td className="td-grade">{props.student.teamProjectDegree}/5</td>
+                <td className="td-grade">{props.student.expectedTypeWork}</td>
+                <td className="td-grade">{props.student.targetWorkCity}</td>
+                <td className="td-grade">{props.student.expectedContractType}</td>
+                <td className="td-grade">{props.student.expectedSalary}</td>
+                <td className="td-grade">{props.student.canTakeApprenticeship}</td>
+                <td className="td-grade">{props.student.monthsOfCommercialExp} {props.student.monthsOfCommercialExp === 0 ? "miesięcy" :(props.student.monthsOfCommercialExp > 4 ? "miesięcy" : "miesiące")}</td>
             </tr>
         </table>
 

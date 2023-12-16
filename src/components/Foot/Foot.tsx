@@ -1,16 +1,19 @@
 import './Foot.css';
+import {useState} from "react";
 
 
-export const Foot = () => {
+export const Foot = (props: any) => {
+
+
 
 
     return <div id="foot">
 
         <label>Ilość elementów</label>
-        <select id='select-quantity'>
+        <select defaultValue="10" id='select-quantity'>
+            <option value="5">5</option>
             <option value="10">10</option>
             <option value="15">15</option>
-            <option value="20">20</option>
         </select>
 
         10 z 90
