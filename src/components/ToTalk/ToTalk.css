@@ -1,0 +1,141 @@
+.page-div {
+    width: 75%;
+    margin: auto;
+    background-color: #292A2B;
+    padding-bottom: 20px;
+}
+
+
+#to-talk-page {
+    color: #FAFAFA;
+    margin-left: 25px;
+    margin-right: 25px;
+
+}
+
+li {
+    /*line-height: 700px;*/
+}
+
+#student-to-talk-page {
+    padding-left: 15px;
+    font-size: 13px;
+    margin-left: 35px;
+    /*line-height: 68px;*/
+}
+
+
+#show-cv-button {
+    background-color: #E02735;
+    border: none;
+    color: #FAFAFA;
+    height: 30px;
+    width: 70px;
+    margin-right: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    float: right;
+    margin-top: 17px;
+}
+
+a {
+    text-decoration: none;
+    color: #FAFAFA;
+}
+
+#not-intrested-button {
+    background-color: #E02735;
+    border: none;
+    color: #FAFAFA;
+    height: 30px;
+    width: 130px;
+    margin-right: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    float: right;
+    margin-top: 17px;
+}
+
+#hired-button-profile {
+    background-color: #E02735;
+    border: none;
+    color: #FAFAFA;
+    height: 30px;
+    width: 130px;
+    margin-right: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    float: right;
+    margin-top: 17px;
+}
+
+.reservation-span {
+    padding-left: 15px;
+    /*height: 20px;*/
+    line-height: 22px;
+    /*display: flex;*/
+    float: left;
+    margin-top: 3px;
+    margin-right: 40px;
+}
+
+.reservation-until {
+    color: #666666;
+    font-size: 11px;
+
+}
+
+.reservation-date {
+    color: #FAFAFA;
+    font-size: 12px;
+
+
+}
+
+.avatar {
+    border-radius: 50%;
+    height: 40px;
+    position: absolute;
+    margin-top: 10px;
+
+}
+
+
+#foot {
+    color: #FAFAFA;
+    font-size: 11px;
+    /*margin-top: 20px;*/
+    /*margin-bottom: 20px;*/
+    text-align: right;
+    width: 75%;
+    margin: 20px auto 20px auto;
+}
+
+
+.previous-next-button {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    background-color: #CFCFCF;
+    border: none;
+}
+
+.previous-next-button-disabled {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    background-color: #666666;
+    border: none;
+    color: #262626;
+}
+
+
+#select-quantity {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 25px;
+    font-size: 10px;
+    background-color: #CFCFCF;
+    border: none;
+
+}

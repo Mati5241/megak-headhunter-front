@@ -11,8 +11,10 @@
 #header-inside {
     background-color: #1E1E1F;
     width: 74%;
-    height: 65px;
+      height: 65px;
     margin: auto;
+
+
 
 }
 
@@ -27,6 +29,26 @@
 
 #user {
     float: right;
+    line-height: 65px;
+
+}
+
+
+#header-avatar {
+    border-radius: 50%;
+    height: 40px;
+    margin-top: 14px;
+    margin-right: 10px;
+    float: right;
+
+}
+
+#show-more-button-header {
+    float: right;
+    margin-right: 15px;
+    margin-left: 20px;
+    color: #666666;
+    cursor: pointer;
     line-height: 65px;
 
 }
