@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import LoginPage from "./pages/LoginPage/LoginPage";
+import {ShowCV} from "./components/ShowCV/ShowCV";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {MainPageLayout} from "./components/AvailableStudentsPage/MainPageLayout";
+import AdminPage from "./pages/AdminPage/Admin"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export function App() {
+
+    const [cv, setCv] = useState(null);
+
+    const pullCv = (data: any) => {
+        setCv(cv => data)
+    }
+
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/cv" element={<ShowCV studentInfo={cv}/>}/>
+                    <Route path="/" element={<MainPageLayout pullCvFunction={pullCv}/>}>
+
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+
+
+        </div>
+    );
 }
-
-export default App;

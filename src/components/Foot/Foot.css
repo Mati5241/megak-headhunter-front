@@ -1,0 +1,29 @@
+#foot {
+    color: #FAFAFA;
+    font-size: 11px;
+    /*margin-top: 20px;*/
+    /*margin-bottom: 20px;*/
+    text-align: right;
+    width: 74%;
+    margin: 20px auto 20px auto;
+}
+
+
+.previous-next-button {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    background-color: #CFCFCF;
+    border: none;
+}
+
+
+#select-quantity {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 25px;
+    font-size: 10px;
+    background-color: #CFCFCF;
+    border: none;
+
+}
