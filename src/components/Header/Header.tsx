@@ -1,45 +1,39 @@
-import "./Header.css"
-import {MainPageLayout} from "../AvailableStudentsPage/MainPageLayout";
-import {useState} from "react";
-import {UserMenu} from "../UserMenu/UserMenu";
+import React, { useState } from 'react';
+import './Header.css';
+import  MainPageLayout  from '../AvailableStudentsPage/MainPageLayout';
+import { UserMenu } from '../UserMenu/UserMenu';
 
+export const Header: React.FC = () => {
+  const [arrow, setArrow] = useState<string>('⮟');
+  const [showUserMenu, setShowUserMenu] = useState<boolean>(false);
 
-export const Header = () => {
-
-
-    const [arrow, setArrow] = useState('⮟')
-    const [showUserMenu, setShowUserMenu] = useState(false);
-
-    const showMore = () => {
-        if (!showUserMenu) {
-            setArrow(arrow => '⮝')
-            setShowUserMenu(showUserMenu => true);
-        } else {
-            setArrow(arrow => '⮟')
-            setShowUserMenu(showUserMenu => false);
-        }
+  const showMore = () => {
+    if (!showUserMenu) {
+      setArrow('⮝');
+      setShowUserMenu(true);
+    } else {
+      setArrow('⮟');
+      setShowUserMenu(false);
     }
+  };
 
+  return (
+    <>
+      <div id="header">
+        <div id="header-inside">
+          <img id="logo" src="logo.webp" alt="megaK" />
 
-    return <>
-        <div id="header">
-            <div id="header-inside">
+          <span id="show-more-button-header" onClick={showMore}>
+            {arrow}
+          </span>
 
-                <img id="logo" src="logo.webp" alt="megaK"/>
+          <div id="user">Tester Testowy</div>
 
-                <span id="show-more-button-header" onClick={showMore}>{arrow}</span>
+          <img id="header-avatar" src="photo.jpg" alt="Avatar" />
 
-
-                <div id="user">Tester Testowy</div>
-
-
-                <img id="header-avatar" src="photo.jpg" alt="Avatar"/>
-
-                {showUserMenu && <UserMenu/>}
-
-            </div>
+          {showUserMenu && <UserMenu />}
         </div>
-
-
+      </div>
     </>
-}
+  );
+};

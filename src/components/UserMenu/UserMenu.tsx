@@ -1,9 +1,6 @@
 import './UserMenu.css';
 
-
 export const UserMenu = () => {
-
-
 
 
     return <div id="user-menu-div">

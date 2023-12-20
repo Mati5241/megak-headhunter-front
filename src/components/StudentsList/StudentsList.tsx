@@ -1,61 +1,38 @@
+import React, { useState } from 'react';
 import './StudentsList.css';
-import {StudentInfo} from "../StudentInfo/StudentInfo";
-import {useState} from "react";
+//import { StudentInfo } from '../StudentInfo/StudentInfo';
 
-
-export const StudentsList = () => {
-
-
-    const [showStudentInfo, setShowStudentInfo] = useState(false);
-    const [arrow, setArrow] = useState('⮟')
-
-
-    const showMore = () => {
-        // if (showStudentInfo === false) {
-        //     setShowStudentInfo(showStudentInfo => true)
-        //     setArrow(arrow => '⮝')
-        // } else {
-        //     setShowStudentInfo(showStudentInfo => false)
-        //     setArrow(arrow => '⮟')
-        // }
-    }
-
-
-    return <div id="students-list">
-
-        <ul>
-            <li>
-                <span className="student">Student 1</span>
-                <span onClick={showMore} className="show-more-button">{arrow}</span>
-                <button className="reservation-button">Zarezerwuj rozmowę</button>
-
-
-            </li>
-            <hr/>
-
-            <li>
-                <span className="student">Student 2</span>
-                <span onClick={showMore} className="show-more-button">{arrow}</span>
-                <button className="reservation-button">Zarezerwuj rozmowę</button>
-
-
-            </li>
-            <hr/>
-
-            <li>
-                <span className="student">Student 3</span>
-                <span onClick={showMore} className="show-more-button">{arrow}</span>
-                <button className="reservation-button">Zarezerwuj rozmowę</button>
-            </li>
-            <hr/>
-
-            <li>
-                <span className="student">Student 4</span>
-                <span onClick={showMore} className="show-more-button">{arrow}</span>
-                <button className="reservation-button">Zarezerwuj rozmowę</button>
-            </li>
-            <hr/>
-        </ul>
-
-    </div>
-}
+interface StudentInfoProps {
+    student: {
+      courseCompletion: number;
+      courseEngagement: number;
+      projectDegree: number;
+      teamProjectDegree: number;
+      expectedTypeWork: string;
+      targetWorkCity: string;
+      expectedContractType: string;
+      expectedSalary: string;
+      canTakeApprenticeship: string;
+      monthsOfCommercialExp: number;
+      // Add other properties as needed
+    };
+  }
+  
+  const StudentInfo: React.FC<StudentInfoProps> = ({ student }) => {
+    return (
+      <div id="student-info">
+        <table>
+          <tr>
+            <td className="td-info">Ocena przejścia kursu</td>
+            {/* ... (Other table headers) ... */}
+          </tr>
+          <tr>
+            <td className="td-grade">{student.courseCompletion}/5</td>
+            {/* ... (Other table data) ... */}
+          </tr>
+        </table>
+      </div>
+    );
+  };
+  
+  export default StudentInfo;

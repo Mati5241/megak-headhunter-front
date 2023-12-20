@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
-import './LoginPage.css'
-
+import React, { useState, ChangeEvent } from 'react';
+import './LoginPage.css';
 
 const LoginPage: React.FC = () => {
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleLoginChange = (e: ChangeEvent<HTMLInputElement>) => {
     setLogin(e.target.value);
   };
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
@@ -66,3 +65,4 @@ const LoginPage: React.FC = () => {
 };
 
 export default LoginPage;
+

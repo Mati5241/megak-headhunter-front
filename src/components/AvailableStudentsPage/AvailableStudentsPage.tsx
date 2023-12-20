@@ -1,54 +1,48 @@
-import {useEffect, useState} from "react";
+import React, { useEffect, useState } from 'react';
+import './AvailableStudentsPage.css';
+import { StudentInfo } from '../StudentInfo/StudentInfo';
 
-import "./AvailableStudentsPage.css"
-import {StudentsList} from "../StudentsList/StudentsList";
-import {StudentInfo} from "../StudentInfo/StudentInfo";
-import {ToTalk} from "../ToTalk/ToTalk";
-
-
-export const AvailableStudentsPage = () => {
-
-    const [selectedPage, setSelectedPage] = useState('availableStudents');
-    const [classButton, setClassButton] = useState('hr-red-left')
-    const [classTextMenuFirst, setClassTextMenuFirst] = useState('choose-page-button-selected')
-    const [classTextMenuSecond, setClassTextMenuSecond] = useState('choose-page-button')
-
-    const selectMenuFirst = () => {
-        setClassButton(classButton => 'hr-red-left')
-        setSelectedPage(selectedPage => 'availableStudents')
-        setClassTextMenuFirst(classTextMenuFirst => 'choose-page-button-selected')
-        setClassTextMenuSecond(classTextMenuSecond => 'choose-page-button')
-    }
-
-    const selectMenuSecond = () => {
-        setClassButton(classButton => 'hr-red-right')
-        setSelectedPage(selectedPage => 'toTalk')
-        setClassTextMenuFirst(classTextMenuFirst => 'choose-page-button')
-        setClassTextMenuSecond(classTextMenuSecond => 'choose-page-button-selected')
-    }
-
-
-    return <>
-
-        <div className="menu-div">
-            <span onClick={selectMenuFirst} className={classTextMenuFirst}>Dostępni kursanci</span>
-            <span onClick={selectMenuSecond} className={classTextMenuSecond}>Do rozmowy</span>
-
-            <br/>
-        </div>
-        <hr className={classButton}/>
-        <hr className="hr-long"/>
-
-        <div className="menu-div">
-            <input type="search" id="input-search" disabled value="🔎 Szukaj..."/>
-            <input type="button" id="filter-button" value="Filtrowanie"/>
-            <br/>
-
-        </div>
-        <hr className="hr-short"/>
-
-        {(selectedPage === 'availableStudents') ? <StudentsList/> : <ToTalk/>}
-
-    </>
-
+interface Student {
+  lastName: string;
+  courseCompletion: string;
+  firstName: string;
+  id: string;
+  // inne właściwości studenta
 }
+
+const AvailableStudentsPage: React.FC = () => {
+  const [students, setStudents] = useState<Student[]>([]);
+
+  // Pobieranie danych students 
+  const fetchStudents = async () => {
+    try {
+      const response = await fetch('API_URL/students'); // Zastąp 'API_URL/students' odpowiednim adresem API
+      const data = await response.json();
+      setStudents(data.studentsList);
+    } catch (error) {
+      console.error('Błąd pobierania danych students', error);
+    }
+  };
+
+  // Wywołanie funkcji pobierającej dane students
+  useEffect(() => {
+    fetchStudents();
+  }, []); // [] oznacza, że useEffect zostanie wywołany tylko raz po zamontowaniu komponentu
+
+  return (
+    <div id="available-students-page">
+      <h1>Dostępni Studenci</h1>
+      <ul>
+        {students.map((student) => (
+          <li key={student.id}>
+            <span className="student-name">{`${student.firstName} ${student.lastName}`}</span>
+            {/* Przekazanie właściwości student do komponentu StudentInfo */}
+            <StudentInfo id={student.id} courseCompletion={student.courseCompletion} courseEngagement={student.courseEngagement} projectDegree={student.projectDegree} teamProjectDegree={student.teamProjectDegree} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default AvailableStudentsPage;

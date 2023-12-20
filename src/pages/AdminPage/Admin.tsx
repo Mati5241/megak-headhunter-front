@@ -1,56 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import './Admin.css';
 
 interface Student {
   name: string;
   email: string;
-  // Dodaj inne pola według potrzeb
+  // Add other fields as needed
 }
 
 const AdminPage: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
     if (selectedFile) {
       if (selectedFile.name.endsWith('.json')) {
         setFile(selectedFile);
       } else {
-        alert('Dozwolone są tylko pliki w formacie JSON.');
+        alert('Only JSON files are allowed.');
       }
     }
   };
 
   const importStudents = async () => {
     if (!file) {
-      alert('Wybierz plik JSON do importu.');
+      alert('Select a JSON file to import.');
       return;
     }
 
-    // Konwertuj plik JSON na tablicę obiektów
-    const students = await convertJSONtoStudents(file);
-
-    // Przygotuj obiekt FormData i dodaj plik JSON
-    const formData = new FormData();
-    formData.append('studentsFile', file);
-
-    // Dodaj inne dane, jeśli potrzebujesz
-    formData.append('otherData', 'Wartość');
-
-    // Wyślij żądanie POST z wykorzystaniem fetch
     try {
-      const response = await fetch('URL_DO_API', {
+      const students = await convertJSONtoStudents(file);
+
+      const formData = new FormData();
+      formData.append('studentsFile', file);
+      // Add other data if needed
+      formData.append('otherData', 'Value');
+
+      const response = await fetch('URL_TO_API', {
         method: 'POST',
         body: formData,
       });
 
       if (response.ok) {
-        alert('Plik został zaimportowany pomyślnie.');
+        alert('File imported successfully.');
       } else {
-        alert('Wystąpił błąd podczas importu.');
+        alert('Error occurred during import.');
       }
     } catch (error) {
-      console.error('Wystąpił błąd:', error);
+      console.error('An error occurred:', error);
     }
   };
 
@@ -70,9 +66,9 @@ const AdminPage: React.FC = () => {
 
   return (
     <div>
-      <h1>Panel Admina</h1>
+      <h1>Admin Panel</h1>
       <input type="file" name="studentsList" accept=".json" onChange={handleFileChange} />
-      <button onClick={importStudents}>Importuj Kursantów</button>
+      <button onClick={importStudents}>Import Students</button>
     </div>
   );
 };
