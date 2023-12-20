@@ -1,5 +1,5 @@
 import "./Header.css"
-import {AvailableStudentsPage} from "../AvailableStudentsPage/AvailableStudentsPage";
+import {MainPageLayout} from "../AvailableStudentsPage/MainPageLayout";
 import {useState} from "react";
 import {UserMenu} from "../UserMenu/UserMenu";
 

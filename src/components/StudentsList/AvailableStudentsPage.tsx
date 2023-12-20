@@ -1,22 +1,18 @@
-import './ToTalk.css';
-import React, {useState} from "react";
+import './AvailableStudentsPage.css';
 import {StudentInfo} from "../StudentInfo/StudentInfo";
-import {useNavigate} from "react-router-dom";
+import {useState} from "react";
+import {Foot} from "../Foot/Foot";
 
 
-export const ToTalk = (props: any) => {
+export const AvailableStudentsPage = () => {
 
-    const navigate = useNavigate()
 
     const [showStudentInfo, setShowStudentInfo] = useState('');
     const [arrow, setArrow] = useState('')
-    const [cv, setCv] = useState('');
-    const [studentInfo, setStudentInfo] = useState(null);
+    const [studentsAll, setStudentsAll] = useState([]);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [studentsPerPage, setStudentsPerPage] = useState(10);
-    const [studentsAll, setStudentsAll] = useState([]);
-
 
 
     const changeQuantity = (e: any) => {
@@ -36,6 +32,21 @@ export const ToTalk = (props: any) => {
     }
 
 
+    const indexOfLastStudent = (currentPage * studentsPerPage);
+    const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
+
+
+    const refresh: any = async () => {
+        const res = await fetch(`https://megakhh.cfolks.pl/api/hh/student`)
+        const data = await res.json();
+        setStudentsAll(data.studentsList)
+    };
+
+    refresh();
+
+    const students: {}[] = studentsAll.slice(indexOfFirstStudent, indexOfLastStudent);
+
+
     const showMore = (id: string): any => {
 
         if (showStudentInfo === '') {
@@ -50,67 +61,25 @@ export const ToTalk = (props: any) => {
         }
     }
 
-    const showCv = (item: any): any => {
-
-        setCv(cv => item.id)
-        setStudentInfo(studentInfo => item)
-        props.pullCvFunction(item)
-        navigate('/cv');
-
-    }
-
-
-    const indexOfLastStudent = (currentPage * studentsPerPage);
-    const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
-
-
-    const refresh: any = async () => {
-        const res = await fetch(`https://megakhh.cfolks.pl/api/hh/student`)
-        const data = await res.json();
-        setStudentsAll(data.studentsList)
-    };
-
-    refresh();
-
-
-    const students: {}[] = studentsAll.slice(indexOfFirstStudent, indexOfLastStudent);
-
     return <>
-
         <div className="page-div">
-            <div id="to-talk-page">
+            <div id="students-list">
 
                 <ul>
                     {students.map((item: any) => (
                         <>
                             <li key={item.id}>
-
-                <span className="reservation-span">
-                    <span className="reservation-until">Rezerwacja do</span>
-                <br/>
-                    <span className="reservation-date">31.12.2023 r.</span>
-                </span>
-
-                                <img className="avatar" src={item.avatarUrl} alt="Avatar"/>
-
-                                <span id="student-to-talk-page">{item.firstName} {item.lastName}</span>
+                                <span className="student">{item.firstName} {item.lastName}</span>
                                 <span onClick={() => showMore(item.id)}
                                       className="show-more-button">{(arrow === item.id) ? '⮝' : '⮟'}</span>
-                                <button id="hired-button-profile">Zatrudniony</button>
-                                <button id="not-intrested-button">Brak zainteresowania</button>
-                                <button onClick={() => showCv(item)} id="show-cv-button">Pokaż CV</button>
-
+                                <button className="reservation-button">Zarezerwuj rozmowę</button>
                                 {(showStudentInfo === item.id) ? <StudentInfo student={item}/> : false}
-
-
                             </li>
-
                             <hr/>
-
                         </>
                     ))}
-
                 </ul>
+
 
             </div>
         </div>
